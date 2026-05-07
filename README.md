@@ -1,6 +1,6 @@
 # mojo_datetime
 
-![Nightly Build Status](https://github.com/martinvuyk/mojo_datetime/actions/workflows/upgrade-and-release.yml/badge.svg?label=Nightly+Build+Status&branch=main)
+![Nightly Build Status](https://img.shields.io/github/actions/workflow/status/martinvuyk/mojo_datetime/upgrade-and-release.yml?branch=main&label=Nightly%20Build%20Status)
 
 A flexible Mojo datetime implementation.
 
