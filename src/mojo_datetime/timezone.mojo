@@ -31,7 +31,7 @@ struct TimeZone[zone_info_type: UTCZoneInfo = ZoneInfo](
         zone_info_type: The type that the zone information is stored in.
 
     Notes:
-        It can be implicitly built from a [`IANA TimeZone identifier`](
+        It can be implicitly built from an [`IANA TimeZone identifier`](
         https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) as long
         as it is in the default zone info dict. Remember they are provided on a
         best-effort basis.
