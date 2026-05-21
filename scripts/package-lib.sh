@@ -22,8 +22,8 @@ mkdir -p "${BUILD_DIR}"
 LIB_PATH="${REPO_ROOT}/mojo_datetime"
 
 echo "Packaging up the Library."
-PACKAGE_NAME="mojo_datetime.mojopkg"
+PACKAGE_NAME="mojo_datetime.mojoc"
 FULL_PACKAGE_PATH="${BUILD_DIR}"/"${PACKAGE_NAME}"
-mojo package "${LIB_PATH}" -o "${FULL_PACKAGE_PATH}"
+mojo precompile "${LIB_PATH}" -o "${FULL_PACKAGE_PATH}"
 
 echo Successfully created "${FULL_PACKAGE_PATH}"
