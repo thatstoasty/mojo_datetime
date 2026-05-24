@@ -268,7 +268,7 @@ def test_datetime_now() raises:
     # FIXME(https://github.com/modular/modular/issues/6583): nanosecond resolution
     sleep(Float64(1))
     end = DateTime.now()
-    assert_not_equal(start.n_second, end.n_second)
+    assert_not_equal(start, end)
 
 
 def test_add_seconds_large() raises:
