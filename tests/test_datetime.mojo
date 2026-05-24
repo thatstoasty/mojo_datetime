@@ -11,7 +11,6 @@
 # limitations under the License.
 # ===----------------------------------------------------------------------=== #
 
-
 from std.testing import (
     assert_equal,
     assert_not_equal,
@@ -20,6 +19,7 @@ from std.testing import (
     assert_true,
     TestSuite,
 )
+from std.python import Python, PythonObject
 
 from mojo_datetime.datetime import DateTime
 from mojo_datetime.timezone import TimeZone, TZ_UTC
@@ -38,6 +38,27 @@ comptime unixcal = UTCCalendar
 comptime tz_0_ = TZ_UTC
 comptime tz_1 = TimeZone("Etc/UTC+1")
 comptime tz1_ = TimeZone("Etc/UTC-1")
+
+
+def py_dt_datetime() raises -> PythonObject:
+    var _datetime = Python.import_module("datetime")
+    return _datetime.datetime
+
+
+def assert_datetime_equal(dt: DateTime, py_dt: PythonObject) raises:
+    var message = t"dt: {dt} is not equal to py_dt: {py_dt}. "
+    assert_equal(dt.year, UInt16(Int(String(py_dt.year))), String(message, t"The mojo_datetime year {dt.year} does not equal the Python datetime year {py_dt.year}"))
+    assert_equal(dt.month, UInt8(Int(String(py_dt.month))), String(message, t"The mojo_datetime month {dt.month} does not equal the Python datetime month {py_dt.month}"))
+    assert_equal(dt.day, UInt8(Int(String(py_dt.day))), String(message, t"The mojo_datetime day {dt.day} does not equal the Python datetime day {py_dt.day}"))
+    assert_equal(dt.hour, UInt8(Int(String(py_dt.hour))), String(message, t"The mojo_datetime hour {dt.hour} does not equal the Python datetime hour {py_dt.hour}"))
+    assert_equal(dt.minute, UInt8(Int(String(py_dt.minute))), String(message, t"The mojo_datetime minute {dt.minute} does not equal the Python datetime minute {py_dt.minute}"))
+    assert_equal(dt.second, UInt8(Int(String(py_dt.second))), String(message, t"The mojo_datetime second {dt.second} does not equal the Python datetime second {py_dt.second}"))
+
+
+def test_utc_now() raises:
+    var dt = DateTime.now()
+    var py_dt = py_dt_datetime().utcnow()
+    assert_datetime_equal(py_dt=py_dt, dt=dt)
 
 
 def test_add() raises:
