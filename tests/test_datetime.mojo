@@ -21,7 +21,7 @@ from std.testing import (
     TestSuite,
 )
 
-from std.benchmark import keep
+from std.benchmark import keep, black_box
 
 from mojo_datetime.datetime import DateTime
 from mojo_datetime.timezone import TimeZone, TZ_UTC
@@ -265,7 +265,7 @@ def test_bitwise() raises:
 
 def test_datetime_now() raises:
     start = DateTime.now()
-    for i in range(100):  # nanosecond resolution
+    for i in range(black_box(100)):  # nanosecond resolution
         keep(i)
     end = DateTime.now()
     assert_not_equal(start.n_second, end.n_second)
