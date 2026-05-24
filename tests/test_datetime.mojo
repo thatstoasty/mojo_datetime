@@ -21,8 +21,6 @@ from std.testing import (
     TestSuite,
 )
 
-from std.benchmark import black_box, keep
-
 from mojo_datetime.datetime import DateTime
 from mojo_datetime.timezone import TimeZone, TZ_UTC
 from mojo_datetime.timedelta import TimeDelta
