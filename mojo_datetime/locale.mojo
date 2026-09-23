@@ -483,7 +483,7 @@ struct LibCLocale(DTLocale):
             When failing to instantiate the locale.
         """
         var null_ptr = Self._ptr()
-        var name = locale_name.as_c_string_slice()
+        var name = locale_name.as_c_string_span()
         self._loc = external_call["newlocale", Self._ptr](
             _LC_TIME_MASK, name.ptr(), null_ptr
         )
