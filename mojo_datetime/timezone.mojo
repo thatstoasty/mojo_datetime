@@ -79,7 +79,7 @@ struct TimeZone[zone_info_type: UTCZoneInfo = ZoneInfo](
         if not res:
             raise Error(t"Time zone string not found: '{tz_str}'")
         self.tz_str = tz_str
-        self.zone_info = res^.unsafe_value()
+        self.zone_info = res.unsafe_value()
 
     @always_inline
     def write_to[W: Writer](self, mut writer: W):
